@@ -1,0 +1,9 @@
+# Ignorar arquivos e pastas do Windows
+AppData/
+*.log
+
+# Ignorar ambientes virtuais e caches de Python
+__pycache__/
+venv/
+.env
+*.pyc
