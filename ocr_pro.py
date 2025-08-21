@@ -38,5 +38,26 @@ def replace(match):
     pix = page.get_pixmap()
     img = image.open(io.BytesIO(pix.tobytes()))
     text = pytesseract.image_to_string(img, lang='eng')
-    text = inches_to_mm(text)
+    text = inches_to_mm(text) # Converts units before translating
+    translated = translator.translate(text, src='en', dest='pt').txt
+    
+    page.clean_contents()
+    page.insert_txt((50, 50), translated, fontsize=12)
+else:
+            # Translating blocks to blocks
+    for block in text_blocks: 
+        x0, y0, x1, y1, text, *_ = block
+        if text.strip(): 
+            
+            # Converter inches for mm before translating
+            text_converted = inches_to_mm(text)
+            translated = translator.translate(text_converted, src='e', dest='pt').text
+            
+            #
+
+
+
+
+
+
         
